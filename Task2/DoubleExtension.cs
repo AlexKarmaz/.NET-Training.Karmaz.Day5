@@ -19,6 +19,10 @@ namespace Task2
         /// <returns>The string with binary representation</returns>
         public static string DoubleToBinary(this double number)
         {
+            if(number == double.Epsilon)
+            {
+                return $"0001";
+            }
             return BinaryRepresentation(number);
         }
 

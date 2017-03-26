@@ -19,15 +19,6 @@ namespace Task2
         /// <returns>The string with binary representation</returns>
         public static string DoubleToBinary(this double number)
         {
-            if(number == double.Epsilon)
-            {
-                return $"0001";
-            }
-            return BinaryRepresentation(number);
-        }
-
-        private static string BinaryRepresentation(double number)
-        {
             var bits = BitConverter.DoubleToInt64Bits(number);
 
             var sign = (bits >> 63) & 1;
@@ -36,8 +27,7 @@ namespace Task2
 
             var mantissa = (bits & (long)Math.Pow(2, 52) - 1);
 
-            return $"{Convert.ToString(sign, 2)}{Convert.ToString(exponent, 2).PadLeft(11, '0')}{Convert.ToString(mantissa, 2).PadLeft(52, '0')}"; 
-
+            return $"{Convert.ToString(sign, 2)}{Convert.ToString(exponent, 2).PadLeft(11, '0')}{Convert.ToString(mantissa, 2).PadLeft(52, '0')}";
         }
     }
 }
